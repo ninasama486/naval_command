@@ -1,0 +1,62 @@
+{
+  "map_preset": "shallow",
+  "weather": "clear",
+  "seed": 511687403,
+  "output_path": "D:/game/HOI4 MOD/naval battle/bridge/session/battle_result.txt",
+  "player": {
+    "units": [
+      {
+        "type": "destroyer",
+        "name": "destroyer #10",
+        "hp": 100.0,
+        "max_hp": 100.0,
+        "organization": 35.0,
+        "max_organization": 35.0,
+        "attributes": {
+          "speed": 32.0,
+          "reliability": 80.0,
+          "light_atk": 0.0,
+          "light_pen": 0.0,
+          "heavy_atk": 0.0,
+          "heavy_pen": 0.0,
+          "torpedo": 0.0,
+          "depth_charge": 1.0,
+          "armor": 0.0,
+          "aa": 0.0,
+          "surface_vis": 10.0,
+          "sea_detect": 20.0,
+          "sub_detect": 2.5,
+          "sub_vis": 0.0
+        }
+      }
+    ]
+  },
+  "enemy": {
+    "units": [
+      {
+        "type": "destroyer",
+        "name": "HMS Test",
+        "hp": 100.0,
+        "max_hp": 100.0,
+        "organization": 35.0,
+        "max_organization": 35.0,
+        "attributes": {
+          "speed": 32.0,
+          "reliability": 80.0,
+          "light_atk": 0.0,
+          "light_pen": 0.0,
+          "heavy_atk": 0.0,
+          "heavy_pen": 0.0,
+          "torpedo": 0.0,
+          "depth_charge": 1.0,
+          "armor": 0.0,
+          "aa": 0.0,
+          "surface_vis": 10.0,
+          "sea_detect": 20.0,
+          "sub_detect": 2.5,
+          "sub_vis": 0.0
+        }
+      }
+    ]
+  }
+}

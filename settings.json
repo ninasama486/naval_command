@@ -1,0 +1,20 @@
+{
+  "_说明": "移植到其他电脑后，先编辑这个文件。路径可以使用正斜杠 /，也可以使用双反斜杠 \\\\。留空表示自动检测。这个文件会覆盖 bridge/config.json 中的同名路径。",
+
+  "_hoi4_game_dir说明": "HOI4 安装目录，里面必须有 hoi4.exe。例如 D:/SteamLibrary/steamapps/common/Hearts of Iron IV",
+  "hoi4_game_dir": "",
+
+  "_hoi4_user_dir说明": "HOI4 用户目录，里面必须有 save games 和 logs。通常在 文档/Paradox Interactive/Hearts of Iron IV；如果留空会自动检测。",
+  "hoi4_user_dir": "",
+
+  "_mod_source_dir说明": "本项目的 MOD 文件夹，必须是纯 ASCII 路径。如果 mod 已经订阅，可以留空，程序会从已安装的 .mod 文件读取 path。",
+  "mod_source_dir": "",
+
+  "_navy_out_exe说明": "navy-out 的 navy.exe。留空时默认使用本项目 navy-out/navy.exe。",
+  "navy_out_exe": "",
+
+  "_navy_out_workdir说明": "navy.exe 所在目录，必须包含 navy.pck。留空时使用 navy.exe 所在目录。",
+  "navy_out_workdir": "",
+
+  "_python说明": "运行桥接程序需要 Python 3.10 或更新版本；Python 不在此文件中配置。"
+}

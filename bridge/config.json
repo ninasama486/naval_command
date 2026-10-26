@@ -1,0 +1,21 @@
+{
+  "_说明": "普通玩家请编辑项目根目录 settings.json；本文件只保留高级选项。路径留空 = 自动检测。",
+  "_路径说明": "mod_source_dir 必须是纯 ASCII 路径，避免 HOI4/PhysFS 无法挂载中文路径。",
+  "hoi4_user_dir": "",
+  "hoi4_game_dir": "",
+  "mod_source_dir": "",
+  "navy_out_exe": "",
+  "navy_out_workdir": "",
+
+  "session_dir": "",
+  "cache_dir": "",
+
+  "selection": "event",
+  "max_battles": 3,
+  "carrier_air_wings": true,
+  "_retreat_action说明": "任意一方或双方全员主动撤离时：org=只把撤离方组织度暂时清零以结束原版海战（HP 无损，组织度自然恢复）；none=完全不做任何伤害，但原版海战可能需要手动撤离。",
+  "retreat_action": "org",
+  "inject_dry_run": false,
+  "log_from_start": false,
+  "save_name": "navy_command_scan"
+}
