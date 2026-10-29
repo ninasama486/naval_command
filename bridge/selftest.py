@@ -221,6 +221,16 @@ def main() -> int:
     t.check(len(cand.player_ships) == 1 and len(cand.enemy_ships) == 1, "candidate ships")
     t.check(cand.active, "recent combat marks active")
 
+    print("3b) 战斗开始时间 -> 昼夜")
+    t.check(battle_mod.date_hour("1936.1.15.22") == 22, "hour parsed from save date")
+    t.check(battle_mod.date_hour("1936.1.15") == -1, "missing hour -> -1")
+    t.check(battle_mod.day_night_for("1936.1.1.7") == "夜晚", "07:00 is night")
+    t.check(battle_mod.day_night_for("1936.1.1.8") == "白天", "08:00 is day")
+    t.check(battle_mod.day_night_for("1936.1.1.12") == "白天", "12:00 is day")
+    t.check(battle_mod.day_night_for("1936.1.1.16") == "白天", "16:00 is day")
+    t.check(battle_mod.day_night_for("1936.1.1.17") == "夜晚", "17:00 is night")
+    t.check(battle_mod.day_night_for("1936.1.1.2") == "夜晚", "02:00 is night")
+
     print("4) navy-out 开局数据")
     from designer import DesignerDB
 
@@ -271,6 +281,7 @@ def main() -> int:
         cand, save, mapdata, cfg.session_dir, designer, with_carrier_air=True
     )
     t.check(setup["map_preset"] in ("shallow", "deep", "fjords", "ocean"), "map preset in setup")
+    t.check(setup["day_night"] == "白天", "day_night follows 12:00 battle start")
     t.check(len(setup["player"]["units"]) == 1, "one player unit")
     t.check(len(setup["enemy"]["units"]) == 1, "one enemy unit")
     t.check(setup["player"]["units"][0]["type"] == "destroyer", "unit type")

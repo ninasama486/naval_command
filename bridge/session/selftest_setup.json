@@ -1,7 +1,8 @@
 {
   "map_preset": "shallow",
   "weather": "clear",
-  "seed": 511687403,
+  "day_night": "白天",
+  "seed": 1500083880,
   "output_path": "D:/game/HOI4 MOD/naval battle/bridge/session/battle_result.txt",
   "player": {
     "units": [

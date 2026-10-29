@@ -329,6 +329,9 @@ class Bridge:
         self.state = "in_battle"
         self.abort_requested = False
 
+        log(
+            f"Battle start time {save.date} -> navy-out day/night: {context.day_night}"
+        )
         log(f"Taking command of battle {self.pending.index(cand) + 1}: {cand.summary}")
 
         def log_ship(ship) -> None:

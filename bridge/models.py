@@ -158,6 +158,7 @@ class BattleContext:
     enemy_doctrine: str = ""
     player_navy_techs: int = 0
     enemy_navy_techs: int = 0
+    day_night: str = ""
 
     def all_ships(self) -> List[Ship]:
         return list(self.player_ships) + list(self.enemy_ships)

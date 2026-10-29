@@ -59,6 +59,37 @@ def _recent(last_combat: str, save_date: str, days: int = 2) -> bool:
     return 0 <= b - a <= days
 
 
+def date_hour(value: str) -> int:
+    """HOI4 date '1936.1.15.22' -> hour (0-23), or -1 without an hour."""
+    try:
+        parts = [int(x) for x in value.replace('"', "").split(".")]
+    except ValueError:
+        return -1
+    if len(parts) < 4:
+        return -1
+    hour = parts[3]
+    return hour if 0 <= hour <= 23 else -1
+
+
+# navy-out's external setup accepts these literals for day_night (see its
+# data/external_setup.example.json template).
+DAY_NIGHT_DAY = "白天"
+DAY_NIGHT_NIGHT = "夜晚"
+DAY_START_HOUR = 8
+DAY_END_HOUR = 16
+
+
+def day_night_for(value: str) -> str:
+    """Map a HOI4 timestamp to navy-out's opening day/night phase.
+
+    Battle start 08:00-16:00 is daytime; every other hour is night.
+    """
+    hour = date_hour(value)
+    if DAY_START_HOUR <= hour <= DAY_END_HOUR:
+        return DAY_NIGHT_DAY
+    return DAY_NIGHT_NIGHT
+
+
 # ---------------------------------------------------------------------------
 # Candidate discovery
 # ---------------------------------------------------------------------------
@@ -227,9 +258,13 @@ def build_context(
 
     seed = random.randint(1, 2_000_000_000)
     output_path = os.path.join(session_dir, "battle_result.txt")
+    # The scan pauses the game and writes the save, so save.date is the battle
+    # start time; navy-out needs it to open at the right day/night phase.
+    day_night = day_night_for(save.date)
     setup = {
         "map_preset": battle.preset,
         "weather": save.weather_for(battle.province),
+        "day_night": day_night,
         "seed": seed,
         "output_path": output_path.replace("\\", "/"),
         "player": {"units": player_units},
@@ -254,6 +289,7 @@ def build_context(
         enemy_doctrine=save.doctrine_for(battle.enemy_tag),
         player_navy_techs=len(save.techs_for(battle.player_tag)),
         enemy_navy_techs=len(save.techs_for(battle.enemy_tag)),
+        day_night=day_night,
     )
     return context, setup
 
@@ -599,6 +635,7 @@ def dump_context(context: BattleContext, path: str) -> None:
         "zone_name": context.zone_name,
         "naval_terrain": context.naval_terrain,
         "preset": context.preset,
+        "day_night": context.day_night,
         "seed": context.seed,
         "player_doctrine": context.player_doctrine,
         "enemy_doctrine": context.enemy_doctrine,

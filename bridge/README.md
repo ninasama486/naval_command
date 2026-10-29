@@ -83,6 +83,7 @@ in_battle ── ntc_abort（放弃决议）──► 终止 navy-out ──► 
 - 海军学说：`doctrine={ countries={ { ... grand_doctrine="..." folder="naval" ... country="TAG" } } }`
 - 科技：国家块内 `technology={ technologies={ ... } }`
 - 天气：`weather={ provinces={ "P"={ water=... snow=... } } }`
+- 战斗开始时间：顶层 `date="年.月.日.时"` 的小时 → navy-out `day_night`；08:00-16:00 为白天（`白天`），其余为夜晚（`夜晚`）
 - 舰名组：`common/units/names_ships/*.txt`
 - 舰载机：`air_base={ carrier={ id=... } }` + `air_wing_pool` → `air_wings`
 
